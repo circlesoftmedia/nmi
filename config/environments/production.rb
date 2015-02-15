@@ -20,7 +20,7 @@ Nmi::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
-  config.assets.precompile += %w(webmaster.css)
+  config.assets.precompile += %w(webmaster.css webmaster.js)
 
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
