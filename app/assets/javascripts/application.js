@@ -10,6 +10,18 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
-//= require jquery_ujs
-//= require_tree .
+// = require jquery
+// = require ./frontend/bootstrap
+// = require ./frontend/bootstrap-transition
+// = require ./frontend/bootstrap-alert
+// = require ./frontend/bootstrap-modal
+// = require ./frontend/bootstrap-dropdown
+// = require ./frontend/bootstrap-scrollspy
+// = require ./frontend/bootstrap-tab
+// = require ./frontend/bootstrap-tooltip
+// = require ./frontend/bootstrap-popover
+// = require ./frontend/bootstrap-button
+// = require ./frontend/bootstrap-collapse
+// = require ./frontend/bootstrap-carousel
+// = require ./frontend/bootstrap-typeahead
+// = require ./frontend/application
