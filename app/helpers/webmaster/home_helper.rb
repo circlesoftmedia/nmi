@@ -1,0 +1,2 @@
+module Webmaster::HomeHelper
+end

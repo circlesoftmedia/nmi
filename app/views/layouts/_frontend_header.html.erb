@@ -1,0 +1,94 @@
+<div class="navbar navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <ul class="nav nav-tabs minor-menu">
+        <li class="dropdown">
+          <% if !user_signed_in?%>
+          	<a href="<%= new_user_session_path %>", title="Login">Login</a> 
+            <ul id="login-dropdown" class="dropdown-menu">
+              <form id="login-form" action="">
+                <h2 class="form-heading login-form-heading">Login here</h2>
+                <div class="form-group">
+                  <input type="text" placeholder="Courriel" name="" class="form-control required" id="login" value="">
+                </div>
+                <div class="form-group">
+                  <input type="password" placeholder="" name="" class="form-control required" id="password">
+                </div>
+                <div class="checkbox pull-left">
+                  <label for="remember-me">
+                    <input type="checkbox" name="" id="remember-me" class="optional">Remember me
+                  </label>
+                </div>
+                <p class="forgot-password pull-right">
+                	<a href="#">Forgot Password?</a>
+                </p>
+                <span class="clearfix"></span>
+                <div class="button-section">
+                	<input type="button" id="button_login" value="Login" class="buttons red-btn " title="Login">
+                	<input type="button" id="button_login" value="Register" class="buttons grey-btn " title="Register">
+                </div>
+              </form>
+            </ul>
+          <% else %>
+            <a href="<%= destroy_user_session_path %>", data-method= 'delete', title="Logout">Logout</a> 
+          <% end %>
+        </li>
+      </ul>
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="nav-collapse collapse">
+        <ul class="nav pull-right">
+          <li class="active"><%= link_to "Home", root_path %></li>
+          <li><%= link_to "About Us", root_path %></li>
+          <li><%= link_to "My Account",  edit_user_registration_path %></li>
+          <li><%= link_to "Faq", root_path %></li>
+          <li><%= link_to "Advance Search", root_path %></li>
+          <li><%= link_to "Vastu Consultancy", root_path %></li>
+          <li><%= link_to "Contact Us", root_path, class: "last-child" %></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+      
+    </div>
+  </div>
+</div>
+
+<div class="header container-fluid">
+  <div class="row-fluid">
+  	<div class="span3">    		
+  		<a class="brand logo" href="<%= root_path %>">
+        <%= image_tag "logo.jpg", {title: "Non Moving Items"} %>
+      </a>
+  	</div>
+    <div class="span9">
+      <div class="top-search-section pull-right span6">
+      	<div class="row-fluid">
+      		<div class="span6">
+            <span class="phone-number">LIVE HELP - <i>9827011111</i></span>
+          </div>
+          <div class="span6">
+              <div class="search-box">
+                  <input type="text" name="" placeholder="Search" id="">
+                  <input type="button" value="" class="icon-search search-button">
+              </div>
+          </div>
+        </div>
+      </div>                
+      <span class="clr"></span>
+      <button type="button" class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse-two"> Menu </button>  
+  		<div class="nav-collapse-two collapse"> 		
+        <ul class="header-menu pull-right">
+            <li class="active"><a href="#">New Item Store</a></li>
+            <li><a href="#">USED Item Store</a></li>
+            <li><a href="#">New Arrivals</a></li>
+            <li><a href="#">Technical Info</a></li>
+            <li><a href="#">Post Inventory</a></li>
+            <li><a href="#">Inventory Calculator</a></li>
+        </ul>
+      </div>
+
+    </div>
+   </div>
+</div>

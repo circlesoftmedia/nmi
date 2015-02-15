@@ -1,0 +1,2 @@
+module Webmaster::CategoriesHelper
+end

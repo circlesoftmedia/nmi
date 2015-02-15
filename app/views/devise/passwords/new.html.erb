@@ -1,0 +1,43 @@
+<div class="banner-section">
+  <%= image_tag "inner-banner.jpg" %>
+</div>
+<div class="bread-crumb">
+	<a href="#" class="bread-c-link">Home</a>        
+    <span class="bread-c-arrow bread-c-red-arrow"> &raquo;</span>
+    <span class="bread-c-link">Forgot your password</span>
+	<span class="clr"></span>
+</div>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <%= render "shared/add_bar" %>
+    <div class="span9">
+      <div class="heading-box">
+        <h2 class="heading-text pull-left">
+        	Forgot your password?
+        </h2>
+        <span class="clr"></span>
+      </div>
+      <div class="col-xs-12">
+        <% flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, class: "alert alert-#{name}" %>
+        <% end -%>
+      </div>
+      <div class="registration-form margin-top64PX">            	
+        <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+          <div class="registration-form-box">
+            <div class="form-item">
+              <label><span class="req">*</span>Email Address</label> 
+              <%= f.email_field :email, :autofocus => true %> 
+            </div>
+          </div>
+          <br/><br/><br/><br/><br/>
+          <input type="submit" value="Send me reset password instructions" title="Submit" class="buttons form-submit-btn" />
+          <br/>
+          <%= render "devise/shared/links" %>
+			  <% end %>
+			  </div>
+			</div>
+		</div>
+	</div>
+</div>
+

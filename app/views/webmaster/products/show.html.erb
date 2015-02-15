@@ -1,0 +1,43 @@
+<div id="page-wrapper">
+  <div id="page-inner">
+    <div class="row">
+      <div class="col-md-8 col-sm-12 col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <%= @product.title %>
+          </div> 
+          <div class="panel-body">
+						<p>
+						  <b>Title:</b>
+						  <%= @product.title %>
+						</p>
+
+						<p>
+						  <b>Description:</b>
+						  <%= @product.description%>
+						</p>
+
+						<p>
+						  <b>Price:</b>
+						  <%= @product.price%>
+						</p>
+
+						<p>
+						  <b>Brand name:</b>
+						  <%= @product.brand_name%>
+						</p>
+
+						<p>
+						  <b>Part number:</b>
+						  <%= @product.part_number %>
+						</p>
+
+
+						<%= link_to 'Edit', edit_webmaster_product_path(@product) %> |
+						<%= link_to 'Back', webmaster_products_path %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

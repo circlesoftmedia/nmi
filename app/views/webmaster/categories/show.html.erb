@@ -1,0 +1,28 @@
+<div id="page-wrapper">
+  <div id="page-inner">
+    <div class="row">
+      <div class="col-md-8 col-sm-12 col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <%= @category.name %>
+          </div> 
+          <div class="panel-body">
+						<p>
+						  <b>Name:</b>
+						  <%= @category.name %>
+						</p>
+
+						<p>
+						  <b>Parent:</b>
+						  <%= @category.parent_category_name%>
+						</p>
+
+
+						<%= link_to 'Edit', edit_webmaster_category_path(@category) %> |
+						<%= link_to 'Back', webmaster_categories_path %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

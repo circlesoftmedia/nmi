@@ -1,0 +1,66 @@
+<div class="banner-section">
+  <%= image_tag "inner-banner.jpg" %>
+</div>
+<div class="bread-crumb">
+	<a href="#" class="bread-c-link">Home</a>        
+    <span class="bread-c-arrow bread-c-red-arrow"> &raquo;</span>
+    <span class="bread-c-link">Login</span>
+	<span class="clr"></span>
+</div>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <%= render "shared/add_bar" %>
+    <div class="span9">
+      <div class="heading-box">
+        <h2 class="heading-text pull-left">
+        	Login Form
+        </h2>
+        <span class="clr"></span>
+      </div>
+      <div class="col-xs-12">
+        <% flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, class: "alert alert-#{name}" %>
+        <% end -%>
+      </div>
+      <div class="registration-form margin-top64PX">            	
+        <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+          <div class="registration-form-box">
+            <div class="form-item">
+              <label><span class="req">*</span>Email Address</label> 
+              <%= f.email_field :email, :autofocus => true %> 
+            </div>
+          </div>
+          <div class="registration-form-box">
+            <div class="form-item">
+            </div>
+          </div>
+          <div class="registration-form-box">
+            <div class="form-item">
+              <label><span class="req">*</span>Password </label> 
+              <%= f.password_field :password  %>   
+            </div> 
+          </div>
+          </br>
+          <div class="registration-form-box">
+            <div class="form-item">
+            <% if devise_mapping.rememberable? -%>
+              <div class="form-bottom-check-box">
+                <div class="form-bottom-check-le">
+			            <%= f.check_box :remember_me %>
+                  <span> Rmember me</span>
+                </div>
+              </div>
+              <span class="clr"></span>
+            <% end -%>
+            </div>
+          </div> 	
+
+          <input type="submit" value="Submit" title="Submit" class="buttons form-submit-btn" />
+          <br/>
+          <%= render "devise/shared/links" %>
+			  <% end %>
+			  </div>
+			</div>
+		</div>
+	</div>
+</div>
