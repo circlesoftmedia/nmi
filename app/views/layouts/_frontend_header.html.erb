@@ -4,7 +4,7 @@
       <ul class="nav nav-tabs minor-menu">
         <li class="dropdown">
           <% if !user_signed_in?%>
-          	<a href="<%= new_user_session_path %>", title="Login">Login</a> 
+          	<a href="<%= new_user_session_path %>", title="Login">Login</a>
             <ul id="login-dropdown" class="dropdown-menu">
               <form id="login-form" action="">
                 <h2 class="form-heading login-form-heading">Login here</h2>
@@ -30,7 +30,7 @@
               </form>
             </ul>
           <% else %>
-            <a href="<%= destroy_user_session_path %>", data-method= 'delete', title="Logout">Logout</a> 
+            <a href="<%= destroy_user_session_path %>", data-method= 'delete', title="Logout">Logout</a>
           <% end %>
         </li>
       </ul>
@@ -50,14 +50,14 @@
           <li><%= link_to "Contact Us", root_path, class: "last-child" %></li>
         </ul>
       </div><!--/.nav-collapse -->
-      
+
     </div>
   </div>
 </div>
-
+<%= render partial: "shared/flash_messages", flash: flash %>
 <div class="header container-fluid">
   <div class="row-fluid">
-  	<div class="span3">    		
+  	<div class="span3">
   		<a class="brand logo" href="<%= root_path %>">
         <%= image_tag "logo.jpg", {title: "Non Moving Items"} %>
       </a>
@@ -75,10 +75,10 @@
               </div>
           </div>
         </div>
-      </div>                
+      </div>
       <span class="clr"></span>
-      <button type="button" class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse-two"> Menu </button>  
-  		<div class="nav-collapse-two collapse"> 		
+      <button type="button" class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse-two"> Menu </button>
+  		<div class="nav-collapse-two collapse">
         <ul class="header-menu pull-right">
             <li class="active"><a href="#">New Item Store</a></li>
             <li><a href="#">USED Item Store</a></li>

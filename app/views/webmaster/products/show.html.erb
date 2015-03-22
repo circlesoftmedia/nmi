@@ -5,7 +5,7 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <%= @product.title %>
-          </div> 
+          </div>
           <div class="panel-body">
 						<p>
 						  <b>Title:</b>
@@ -18,18 +18,39 @@
 						</p>
 
 						<p>
+						  <b>Product main image:</b>
+						  <%= image_tag @product.product_image.thumb.url%>
+						</p>
+
+
+
+						<p>
 						  <b>Price:</b>
 						  <%= @product.price%>
 						</p>
 
 						<p>
 						  <b>Brand name:</b>
-						  <%= @product.brand_name%>
+						  <%= @product.brand_id%>
 						</p>
 
 						<p>
 						  <b>Part number:</b>
 						  <%= @product.part_number %>
+						</p>
+
+						<p>
+						  <b>Uniq code:</b>
+						  <%= @product.uniq_code %>
+						</p>
+
+						<p>
+						  <b>Image:</b>
+						  <% if @product.images.present? %>
+						    <% @product.images.each do |img|%>
+						      <%= image_tag img.image.thumb.url%>
+						    <% end %>
+						  <% end %>
 						</p>
 
 

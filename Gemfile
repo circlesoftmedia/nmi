@@ -5,7 +5,7 @@ gem 'rails', '3.2.0'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
+gem 'mysql2'
 gem 'devise'
 
 # Gems used only for assets and not required
@@ -27,9 +27,15 @@ gem 'cancancan', '~> 1.10'
 # File upload
 gem 'carrierwave'
 gem 'carrierwave_backgrounder'
-gem 'jquery-fileupload-rails'
+gem "jquery-fileupload-rails"
 gem 'mini_magick'
 gem 'rmagick', '2.13.2'
+gem "cocoon"
+
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'jbuilder', '~> 1.2'
+
+#gem 'acts_as_list'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

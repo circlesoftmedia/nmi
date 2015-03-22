@@ -29,8 +29,17 @@
 									  </div>
 									  <div class="form-group">
 									    <%= f.label :parent_id %><br />
-									    <%= f.number_field :parent_id %>
+									    <%= f.select :parent_id, Category.all.collect {|p| [ p.name, p.id ] },  :selected => f.object.parent_id %>
 									  </div>
+									  <div class="form-group">
+                    <%= f.fields_for :image_attributes  do |i| %>
+                      <%= i.file_field :image %>
+                    <% end %>
+                    </div>
+                    <% if @category.image.present? %>
+                      <%= image_tag @category.image.image.thumb.url%>
+                    <% end %>
+
 									  <div class="form-group">
 									    <%= f.submit %>
 									  </div>

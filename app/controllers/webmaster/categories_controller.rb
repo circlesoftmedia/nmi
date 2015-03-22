@@ -1,8 +1,8 @@
 class Webmaster::CategoriesController < ApplicationController
- before_filter :authenticate_admin!
- before_filter :authorize_admin
- #load_and_authorize_resource
- 
+ before_filter :authenticate_user!
+ #before_filter :authorize_admin
+ load_and_authorize_resource
+
  layout 'webmaster'
 
   # GET /webmaster/categories

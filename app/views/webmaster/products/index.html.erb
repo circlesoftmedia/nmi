@@ -1,11 +1,11 @@
 <div id="page-wrapper">
   <div id="page-inner">
     <div class="row">
-      <div class="col-md-8 col-sm-12 col-xs-12">
+      <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-             Product Lists 
-          </div> 
+             Product Lists
+          </div>
           <div class="panel-body">
             <div class="table-responsive">
 
@@ -16,6 +16,7 @@
                   <th>Price</th>
                   <th>Brand Name</th>
                   <th>Part Name</th>
+                  <th>Uniq code:</th>
                   <th></th>
                   <th></th>
                   <th></th>
@@ -26,8 +27,9 @@
                   <td><%= product.title %></td>
                   <td><%= product.description %></td>
                   <td><%= product.price %></td>
-                  <td><%= product.brand_name %></td>
+                  <td><%= product.brand_id %></td>
                   <td><%= product.part_number %></td>
+                  <td><%= product.try(:uniq_code) %></td>
                   <td><%= link_to 'Show', webmaster_product_path(product) %></td>
                   <td><%= link_to 'Edit', edit_webmaster_product_path(product) %></td>
                   <td><%= link_to 'Destroy', webmaster_product_path(product), confirm: 'Are you sure?', method: :delete %></td>

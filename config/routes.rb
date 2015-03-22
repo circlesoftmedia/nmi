@@ -1,5 +1,4 @@
 Nmi::Application.routes.draw do
-  
 
   root :to => 'home#index'
 
@@ -9,7 +8,19 @@ Nmi::Application.routes.draw do
   namespace :webmaster do
     resources :categories
     resources :users
-    resources :products
+    resources :brands
+    resources :products do
+      collection do
+        get :search_attribute_name
+      end
+    end
+    resources :images do
+      collection do
+        get :sort
+        post :upload_image
+        get :delete_image
+      end
+    end
     get "home/index"
   end
 

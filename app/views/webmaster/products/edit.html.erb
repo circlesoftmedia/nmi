@@ -9,7 +9,7 @@
             </div>
             <div class="panel-body">
               <div class="row">
-                <div class="col-lg-6">    
+                <div class="col-lg-6">
 									<%= form_for [:webmaster, @product] do |f| %>
 									  <% if @product.errors.any? %>
 									    <div id="error_explanation">
@@ -22,7 +22,9 @@
 									      </ul>
 									    </div>
 									  <% end %>
+                    <%= f.hidden_field :token, :value=>@product.token %>
 
+                    <%= f.hidden_field :user_id, :value=> current_user.id %>
 									  <div class="form-group">
 									    <%= f.label :title %><br />
 									    <%= f.text_field :title %>
@@ -33,26 +35,63 @@
 									  </div>
 
 									  <div class="form-group">
+									    <%= f.label :product_image %><br />
+									    <%= f.file_field :product_image %>
+									  </div>
+									  <div class="form-group">
+									    <% if @product.product_image.present? %>
+									      <%= image_tag @product.product_image.thumb.url%>
+                      <% end %>
+									  </div>
+
+									  <div class="form-group">
 									    <%= f.label :price %><br />
 									    <%= f.text_field :price %>
 									  </div>
 									  <div class="form-group">
-									    <%= f.label :brand_name %><br />
-									    <%= f.text_field :brand_name %>
+									    <%= f.label 'Select brand name' %><br />
+									    <%= f.collection_select :brand_id, Brand.all, :id, :name %>
 									  </div>
 									  <div class="form-group">
 									    <%= f.label :part_number %><br />
 									    <%= f.text_field :part_number %>
 									  </div>
 
-									  <div class="form-group">
-									    <%= f.submit %>
-									  </div>
+									  <h3> Attributes </h3>
+
+                    <%= link_to_add_association 'add more +', f, :products_product_items,
+													    'data-association-insertion-node' => "#product_items ol",
+													    'data-association-insertion-method' => "append",
+													    :wrap_object => Proc.new {|ppi| ppi.build_product_item; ppi } %>
+									  <div id='product_items'>
+                      <ol>
+											  <%= f.fields_for :products_product_items do |pp| %>
+												  <%= render 'products_product_item_fields', f: pp %>
+
+												<% end %>
+
+											</ol>
+										</div>
+
 									<% end %>
 
+									<ul id="pictures" data-update-url="<%= sort_webmaster_images_url %>" class="pictures_list">
+											<%= render @images,:image => @image  %>
+									</ul>
+
+                  <%= render "upload_image" %>
+
+                  <div class="clear"></div>
+
+									<div class="row">
+										<div class="col-lg-8 col-md-8">
+											<br />
+											<button id='product_submit' class="btn btn-primary btn-save">Save Project</button>
+											<%= link_to 'Back', webmaster_products_path, class: 'btn btn-primary' %>
+										</div>
+									</div>
 
 
-									<%= link_to 'Back', webmaster_products_path %>
 								</div>
 							</div>
 						</div>
@@ -62,3 +101,22 @@
 		</div>
 	</div>
 </div>
+
+
+
+<script>
+
+	  $('#new_image').fileupload();
+	 //  $('#pictures').sortable({
+		//   axis: 'y',
+		//   update: function() {
+		//     return $.post($(this).data('update-url'), $(this).sortable('serialize'));
+		//   }
+		// });
+
+		$('#product_submit').on('click',function(){
+
+	  	$('.edit_product').submit();
+	  });
+
+</script>

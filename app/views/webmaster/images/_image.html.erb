@@ -1,0 +1,13 @@
+<%= fields_for 'product[images_attributes][]', image  do |f| %>
+  <%= content_tag_for :li, image do %>
+  	<%= link_to 'X',delete_image_webmaster_images_path(:id=>image.id),:remote=>true, :style=>"float:right;"%>
+		<div class="col-md-4">
+			<div class="image">
+		  		<%= image_tag(image.image_url(:thumb))  %>
+			</div>
+				<%= f.hidden_field :product_token,:value =>image.product_token %>
+		</div>
+		<hr/>
+	<% end%>
+<%end%>
+<br/>

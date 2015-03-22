@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150210092724) do
+ActiveRecord::Schema.define(:version => 20150322091125) do
+
+  create_table "brands", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -26,16 +32,38 @@ ActiveRecord::Schema.define(:version => 20150210092724) do
     t.string   "imageable_type"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "product_token"
+    t.integer  "position"
+  end
+
+  create_table "product_items", :force => true do |t|
+    t.string   "name"
+    t.string   "item_type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "products", :force => true do |t|
     t.string   "title"
     t.string   "description"
     t.float    "price"
-    t.string   "brand_name"
+    t.integer  "brand_id"
     t.string   "part_number"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "uniq_code"
+    t.string   "token"
+    t.string   "product_image"
+    t.integer  "user_id"
+    t.integer  "category_id"
+  end
+
+  create_table "products_product_items", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "product_item_id"
+    t.string   "value"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "users", :force => true do |t|

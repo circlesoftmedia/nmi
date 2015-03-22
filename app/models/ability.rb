@@ -5,9 +5,12 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
     user ||= User.new # guest user (not logged in)
-    #binding.pry
+
+
     if user.role == 'super_admin'
       can :manage, :all
+    elsif user.role == 'admin'
+      can :manage, Product, :user_id => user.id
     end
     #
     # The first argument to `can` is the action you are giving the user

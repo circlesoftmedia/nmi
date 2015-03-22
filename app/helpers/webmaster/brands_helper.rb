@@ -1,0 +1,2 @@
+module Webmaster::BrandsHelper
+end

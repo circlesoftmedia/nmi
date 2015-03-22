@@ -1,0 +1,22 @@
+<div id="page-wrapper">
+  <div id="page-inner">
+    <div class="row">
+      <div class="col-md-8 col-sm-12 col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <%= @brand.name %>
+          </div>
+          <div class="panel-body">
+            <p>
+              <b>Name:</b>
+              <%= @brand.name %>
+            </p>
+
+            <%= link_to 'Edit', edit_webmaster_brand_path(@brand) %> |
+            <%= link_to 'Back', webmaster_brands_path %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -17,6 +17,13 @@
 						  <%= @category.parent_category_name%>
 						</p>
 
+						<p>
+						  <b>Image:</b>
+						  <% if @category.image.present? %>
+						    <%= image_tag @category.image.image.thumb.url%>
+						  <% end %>
+						</p>
+
 
 						<%= link_to 'Edit', edit_webmaster_category_path(@category) %> |
 						<%= link_to 'Back', webmaster_categories_path %>

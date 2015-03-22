@@ -1,0 +1,17 @@
+<li class="nested-fields">
+  <div class="controls">
+    <%= f.fields_for :product_item do |item| %>
+       <%= item.label :name %>
+        <%= item.text_field :name, class: 'item_name' %>
+        <br/>
+        <%= item.label :item_type %>
+        <%= item.select(:item_type, options_for_select(ProductItem::DATA_TYPES ,:selected => item.object.item_type))  %>
+        <br/>
+    <% end %>
+    <%= f.label :value %>
+    <%= f.text_field :value %>
+    <%= link_to_remove_association "remove", f %>
+  </div>
+</li>
+
+<%= render "attribute_suggestion" %>

@@ -41,6 +41,7 @@ GEM
       mime-types (>= 1.16)
     carrierwave_backgrounder (0.4.1)
       carrierwave (~> 0.5)
+    cocoon (1.2.6)
     coderay (1.1.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -58,11 +59,14 @@ GEM
     execjs (2.2.2)
     hike (1.2.3)
     i18n (0.7.0)
+    jbuilder (1.5.1)
+      activesupport (>= 3.0.0)
+      multi_json (>= 1.2.0)
     journey (1.0.4)
     jquery-fileupload-rails (0.4.1)
       actionpack (>= 3.1)
       railties (>= 3.1)
-    jquery-rails (3.1.2)
+    jquery-rails (2.3.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.2)
@@ -75,8 +79,8 @@ GEM
     mime-types (1.25.1)
     mini_magick (4.0.0)
     multi_json (1.10.1)
+    mysql2 (0.3.17)
     orm_adapter (0.5.0)
-    pg (0.17.1)
     polyglot (0.3.5)
     pry (0.10.1)
       coderay (~> 1.1.0)
@@ -141,12 +145,14 @@ DEPENDENCIES
   cancancan (~> 1.10)
   carrierwave
   carrierwave_backgrounder
+  cocoon
   coffee-rails (~> 3.2.1)
   devise
+  jbuilder (~> 1.2)
   jquery-fileupload-rails
   jquery-rails
   mini_magick
-  pg
+  mysql2
   pry
   rails (= 3.2.0)
   rmagick (= 2.13.2)

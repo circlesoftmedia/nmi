@@ -1,11 +1,17 @@
 class Webmaster::ProductsController < ApplicationController
-  before_filter :authenticate_admin!
+ before_filter :authenticate_user!
+ load_and_authorize_resource
  layout 'webmaster'
- 
+
+
   # GET /webmaster/categories
   # GET /webmaster/categories.json
   def index
-    @products = Product.all
+    if current_user.role == 'super_admin'
+      @products = Product.all
+    else
+      @products = current_user.products
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -28,7 +34,10 @@ class Webmaster::ProductsController < ApplicationController
   # GET /webmaster/categories/new.json
   def new
     @product =  Product.new
-
+    if @product.token.nil?
+      @product.token = @product.generate_token
+    end
+    @images = Image.where(:product_token => @product.token).order("position")
     respond_to do |format|
       format.html # new.html.erb
       #format.json { render json: @product }
@@ -38,15 +47,19 @@ class Webmaster::ProductsController < ApplicationController
   # GET /webmaster/categories/1/edit
   def edit
     @product = Product.find(params[:id])
+    @images = @product.images.order('position')
   end
 
   # POST /webmaster/categories
   # POST /webmaster/categories.json
   def create
     @product = Product.new(params[:product])
-
+    @images = Image.where(:product_token => params[:product][:token])
     respond_to do |format|
       if @product.save
+        @images.each do |image|
+          image.update_attributes(imageable_id: @product.id, imageable_type: @product.class.name)
+        end
         format.html { redirect_to webmaster_product_path(@product), notice: 'Product was successfully created.' }
         #format.json { render json: @webmaster_category, status: :created, location: @webmaster_category }
       else
@@ -59,9 +72,12 @@ class Webmaster::ProductsController < ApplicationController
   # PUT /webmaster/categories/1.json
   def update
     @product = Product.find(params[:id])
-
+    @images = Image.where(:product_token => params[:product][:token])
     respond_to do |format|
       if @product.update_attributes(params[:product])
+        @images.each do |image|
+          image.update_attributes(imageable_id: @product.id, imageable_type: @product.class.name)
+        end
         format.html { redirect_to webmaster_product_path(@product), notice: 'Product was successfully updated.' }
         #format.json { head :no_content }
       else
@@ -80,6 +96,13 @@ class Webmaster::ProductsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to webmaster_products_url }
       format.json { head :no_content }
+    end
+  end
+
+  def search_attribute_name
+    @results =  ProductItem.where("name LIKE ?", "%#{params[:q]}%")
+    respond_to do |format|
+      format.json
     end
   end
 end

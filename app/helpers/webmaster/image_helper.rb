@@ -1,0 +1,2 @@
+module Webmaster::ImageHelper
+end

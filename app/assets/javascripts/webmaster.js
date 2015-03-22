@@ -11,12 +11,19 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 // = require jquery
+//= require jquery-ui
 //= require jquery_ujs
-// = require  ./backend/jquery.metisMenu
+//= require jquery-fileupload/basic
+//= require cocoon
 // = require ./backend/bootstrap.min
-// = require ./backend/custom-scripts
-// = require ./backend/custom
-// = require ./backend/dataTables/dataTables.bootstrap
+// = require ./backend/handlebars-v1.3.0
+// = require ./backend/bloodhound
+// = require ./backend/typeahead.jquery
+
+// = require  ./backend/jquery.metisMenu
 // = require ./backend/dataTables/jquery.dataTables
-// = require ./backend/morris/morris
-// = require ./backend/morris/raphael-2.1.0.min
+// = require ./backend/dataTables/dataTables.bootstrap
+
+
+
+
