@@ -8,5 +8,4 @@ class ProductItem < ActiveRecord::Base
 	DATA_TYPES = [ ['string', 'string'],['number', 'number'],['multiple value', 'multiple value'] ]
 
 
-
 end
