@@ -31,7 +31,9 @@
                   <td><%= product.part_number %></td>
                   <td><%= product.try(:uniq_code) %></td>
                   <td><%= link_to 'Show', webmaster_product_path(product) %></td>
-                  <td><%= link_to 'Edit', edit_webmaster_product_path(product) %></td>
+                  <% if current_user.role == 'super_admin'%>
+                    <td><%= link_to 'Edit', edit_webmaster_product_path(product) %></td>
+                  <% end %>
                   <td><%= link_to 'Destroy', webmaster_product_path(product), confirm: 'Are you sure?', method: :delete %></td>
                 </tr>
               <% end %>

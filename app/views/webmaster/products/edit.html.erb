@@ -31,7 +31,7 @@
 									  </div>
 									  <div class="form-group">
 									    <%= f.label :description %><br />
-									    <%= f.text_field :description %>
+									    <%= f.text_area :description, :cols => "50", :rows => "8" %>
 									  </div>
 
 									  <div class="form-group">
@@ -57,7 +57,27 @@
 									    <%= f.text_field :part_number %>
 									  </div>
 
-									  <h3> Attributes </h3>
+									  <div class="form-group" id='categories'>
+                      <%= f.label 'Select category name' %><br />
+                      <%= f.collection_select :category_id, Category.get_all_parent, :id, :name, {:selected => f.object.category_id},  {:include_blank => 'Select category'}%>
+                    </div>
+
+                    <div class="form-group" id='categories'>
+                      <%= f.label 'Select category name' %><br />
+                      <%= f.collection_select :sub_category_id, Category.get_all_sub_categories, :id, :name, {:selected => f.object.sub_category_id},   {:include_blank => 'Select sub category'}%>
+                    </div>
+
+                    <div class="form-group" id='categories'>
+                      <%= f.label 'Select category name' %><br />
+                      <%= f.collection_select :sub_category_first_id, Category.get_all_sub_categories_level_1, :id, :name, {:selected => f.object.sub_category_first_id},  {:include_blank => 'Select sub category first'}%>
+                    </div>
+
+                    <div class="form-group" id='categories'>
+                      <%= f.label 'Select category name' %><br />
+                      <%= f.collection_select :sub_category_second_id, Category.get_all_sub_categories_level_2, :id, :name, {:selected => f.object.sub_category_second_id},  {:include_blank => 'Select sub category second'}%>
+                    </div>
+
+									  <%= label_tag 'Product Attributes'%>
 
                     <%= link_to_add_association 'add more +', f, :products_product_items,
 													    'data-association-insertion-node' => "#product_items ol",
@@ -78,7 +98,7 @@
 									<ul id="pictures" data-update-url="<%= sort_webmaster_images_url %>" class="pictures_list">
 											<%= render @images,:image => @image  %>
 									</ul>
-
+                  <%= label_tag 'Upload product images'%>
                   <%= render "upload_image" %>
 
                   <div class="clear"></div>

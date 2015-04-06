@@ -12,6 +12,7 @@ Nmi::Application.routes.draw do
     resources :products do
       collection do
         get :search_attribute_name
+        get :search_categories
       end
     end
     resources :images do

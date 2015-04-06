@@ -22,11 +22,8 @@
     // initialize the bloodhound suggestion engine
     hive_suggest_results.initialize();
 
-    // instantiate the typeahead UI
-    //$('.item_name').each(function() {
-    //  var divID = '#' + $(this).attr('id');
-    //  alert(divID);
-      $('.item_name').typeahead({
+    function call_autocomplete(obj_id){
+      $("#"+obj_id).typeahead({
         hint: true,
         highlight: true,
         minLength: 1
@@ -42,6 +39,23 @@
           suggestion: Handlebars.compile('<%= j(render(partial: 'attribute_suggest_result')) %>')
         }
       }/* more data sets if needed */);
-    //});
+    }
+
+    // instantiate the typeahead UI
+    // $('.item_name').each(function() {
+    //  var divID = '#' + $(this).attr('id');
+    //  alert(divID);
+
+    // });
+
+    $("#product_items").bind("cocoon:after-insert", function() {
+      $(".item_name").each(function(){
+        if($(this).attr('id') !== undefined){
+          if(!$(this).hasClass('tt-input')){
+            call_autocomplete($(this).attr('id'));
+          }
+        }
+      });
+    });
   });
 </script>

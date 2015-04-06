@@ -6,7 +6,8 @@ class Product < ActiveRecord::Base
   has_many :product_items, through: :products_product_items
 
 	attr_accessible :title, :description, :price, :brand_id, :user_id, :category_id, :part_number,
-                  :images_attributes, :token, :product_image, :product_items_attributes, :products_product_items_attributes
+                  :images_attributes, :token, :product_image, :product_items_attributes,
+                  :products_product_items_attributes, :sub_category_id, :sub_category_first_id, :sub_category_second_id
 	accepts_nested_attributes_for :images, :allow_destroy => true
   accepts_nested_attributes_for :products_product_items,
            :reject_if => :all_blank,

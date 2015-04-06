@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150322091125) do
+ActiveRecord::Schema.define(:version => 20150406120126) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -24,7 +24,10 @@ ActiveRecord::Schema.define(:version => 20150322091125) do
     t.integer  "parent_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "ancestry"
   end
+
+  add_index "categories", ["ancestry"], :name => "index_categories_on_ancestry"
 
   create_table "images", :force => true do |t|
     t.string   "image"
@@ -49,13 +52,16 @@ ActiveRecord::Schema.define(:version => 20150322091125) do
     t.float    "price"
     t.integer  "brand_id"
     t.string   "part_number"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
     t.string   "uniq_code"
     t.string   "token"
     t.string   "product_image"
     t.integer  "user_id"
     t.integer  "category_id"
+    t.integer  "sub_category_id"
+    t.integer  "sub_category_first_id"
+    t.integer  "sub_category_second_id"
   end
 
   create_table "products_product_items", :force => true do |t|

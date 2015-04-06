@@ -4,8 +4,8 @@
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-             Category Lists 
-          </div> 
+             Category Lists
+          </div>
           <div class="panel-body">
             <div class="table-responsive">
 
@@ -21,7 +21,7 @@
               <% @categories.each do |category| %>
                 <tr>
                   <td><%= category.name %></td>
-                  <td><%= category.parent_category_name %></td>
+                  <td><%= category.parent.try(:name) %></td>
                   <td><%= link_to 'Show', webmaster_category_path(category) %></td>
                   <td><%= link_to 'Edit', edit_webmaster_category_path(category) %></td>
                   <td><%= link_to 'Destroy', webmaster_category_path(category), confirm: 'Are you sure?', method: :delete %></td>
