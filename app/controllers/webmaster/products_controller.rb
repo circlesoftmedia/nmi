@@ -106,7 +106,7 @@ class Webmaster::ProductsController < ApplicationController
     end
   end
 
-  # def search_categories
-  #   @categories = Category.where(:id=> params[:sub_cat_id]).first.children
-  # end
+  def search_categories
+    @categories = Category.where(:id=> params[:sub_cat_id]).first.children
+  end
 end

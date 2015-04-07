@@ -1,0 +1,7 @@
+<% if params[:type] == 'category' %>
+  $('#sub_category').html('<%= j(render(partial: 'select_category', locals: { sub_categories: @categories, selected_value: "" })) %>');
+<% elsif params[:type] == 'sub_category' %>
+  $('#sub_category_first').html('<%= j(render(partial: 'select_category_first', locals: { sub_categories: @categories, selected_value: "" })) %>');
+<% elsif params[:type] == 'sub_category_first' %>
+  $('#sub_category_second').html('<%= j(render(partial: 'select_category_second', locals: { sub_categories: @categories, selected_value: "" })) %>');
+<% end %>

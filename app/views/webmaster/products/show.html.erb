@@ -53,8 +53,9 @@
 						  <% end %>
 						</p>
 
-
-						<%= link_to 'Edit', edit_webmaster_product_path(@product) %> |
+            <% if current_user.role == 'super_admin' %>
+							<%= link_to 'Edit', edit_webmaster_product_path(@product) %> |
+						<% end %>
 						<%= link_to 'Back', webmaster_products_path %>
 					</div>
 				</div>

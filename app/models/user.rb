@@ -17,4 +17,8 @@ class User < ActiveRecord::Base
   def full_name
     return "#{self.first_name} #{self.last_name}"
   end
+
+  def role?( requested_role )
+    self.role == requested_role.to_s
+  end
 end

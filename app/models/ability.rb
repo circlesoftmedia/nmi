@@ -7,9 +7,9 @@ class Ability
     user ||= User.new # guest user (not logged in)
 
 
-    if user.role == 'super_admin'
+    if user.role? :super_admin
       can :manage, :all
-    elsif user.role == 'admin'
+    elsif user.role? :admin
       can :manage, Product, :user_id => user.id
     end
     #

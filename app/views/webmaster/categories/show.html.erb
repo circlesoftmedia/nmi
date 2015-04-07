@@ -14,7 +14,7 @@
 
 						<p>
 						  <b>Parent:</b>
-						  <%= @category.parent.name%>
+						  <%= @category.parent.try(:name)%>
 						</p>
 
 						<p>

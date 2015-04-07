@@ -1,0 +1,17 @@
+<div class="form-group" id='sub_category'>
+  <%= label_tag 'Select sub category level first' %><br />
+  <%= select_tag 'product[sub_category_first_id]', options_from_collection_for_select(sub_categories, :id, :name, selected: selected_value),  {:include_blank => 'Select sub category'}%>
+</div>
+
+<script>
+
+    $('#product_sub_category_first_id').change(function(){
+      var val_id =  $('#product_sub_category_first_id :selected').val();
+      $.ajax({
+          type: 'GET',
+          url: "<%= search_categories_webmaster_products_path %>",
+          data: {"sub_cat_id": val_id, "type": "sub_category_first"}
+      });
+
+    });
+</script>
