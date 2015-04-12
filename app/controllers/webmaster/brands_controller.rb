@@ -16,7 +16,11 @@ class Webmaster::BrandsController < ApplicationController
     @brand = Brand.new(params[:brand])
     respond_to do |format|
       if @brand.save
-        format.html { redirect_to webmaster_brand_path(@brand), notice: 'Brand was successfully created.' }
+        if params[:commit] == "Add Brand"
+          format.html { redirect_to new_webmaster_product_path }
+        else
+           format.html { redirect_to webmaster_brand_path(@brand), notice: 'Brand was successfully created.' }
+        end
         #format.json { render json: @webmaster_category, status: :created, location: @webmaster_category }
       else
         format.html { render action: "new" }
@@ -45,6 +49,15 @@ class Webmaster::BrandsController < ApplicationController
       end
     end
   end
+
+  def add_new_brand
+    @brand = Brand.new
+    respond_to do |format|
+      format.js
+    end
+  end
+
+
 
   def destroy
     @brand = Brand.find(params[:id])

@@ -1,0 +1,17 @@
+<div>
+  <%= form_for([:webmaster, brand], remote: true) do |f| %>
+    <div class="form-group">
+      <%= f.text_field :name %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Add Brand" %>
+    </div>
+  <% end %>
+</div>
+<br/>
+
+<script>
+  var f1 = new LiveValidation('brand_name');
+  f1.add( Validate.Presence );
+
+</script>

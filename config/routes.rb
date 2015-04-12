@@ -8,7 +8,12 @@ Nmi::Application.routes.draw do
   namespace :webmaster do
     resources :categories
     resources :users
-    resources :brands
+    resources :brands do
+      collection do
+        get :add_new_brand
+        post :create_new_brand
+      end
+    end
     resources :products do
       collection do
         get :search_attribute_name

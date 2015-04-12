@@ -32,7 +32,19 @@
                       <%= f.text_area :description, :cols => "50", :rows => "8" %>
                     </div>
 
-                     <div class="form-group">
+                    <div class="form-group">
+                      <%= f.label 'Select brand name' %><br />
+                      <%= f.collection_select :brand_id, Brand.all, :id, :name %>
+
+                      <%= link_to 'Add New Brand', add_new_brand_webmaster_brands_path, :remote => true %>
+                      <br/>
+                      <div id='add_new_brand'>
+
+                      </div>
+                      <br/>
+                    </div>
+
+                    <div class="form-group">
                       <%= f.label :product_image %><br />
                       <%= f.file_field :product_image %>
                     </div>
@@ -41,10 +53,7 @@
                       <%= f.label :price %><br />
                       <%= f.text_field :price %>
                     </div>
-                    <div class="form-group">
-                      <%= f.label 'Select brand name' %><br />
-                      <%= f.collection_select :brand_id, Brand.all, :id, :name %>
-                    </div>
+
                     <div class="form-group">
                       <%= f.label :part_number %><br />
                       <%= f.text_field :part_number %>
