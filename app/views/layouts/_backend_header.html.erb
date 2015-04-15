@@ -12,8 +12,10 @@
 
     <ul class="nav navbar-top-links navbar-right">
         <li class="dropdown">
+          <% if current_user.role == 'super_admin' %>
             <a href="<%= webmaster_users_path %>">User Lists
             </a>
+          <% end %>
             <!-- /.dropdown-messages -->
         </li>
         <!-- /.dropdown -->
@@ -22,13 +24,24 @@
             </a>
         </li>
         <li class="dropdown">
-          <a href="<%= webmaster_categories_path %>">Category
+          <% if current_user.role == 'super_admin' %>
+            <a href="<%= webmaster_categories_path %>">Category
             </a>
+          <% end %>
         </li>
 
         <li class="dropdown">
-          <a href="<%= webmaster_brands_path %>">Brand
+          <% if current_user.role == 'super_admin' %>
+            <a href="<%= webmaster_brands_path %>">Brand
             </a>
+          <% end %>
+        </li>
+
+        <li class="dropdown">
+          <% if current_user.role == 'super_admin' %>
+            <a href="<%= category_childrens_webmaster_categories_path %>">Category Childrens
+            </a>
+          <% end %>
         </li>
         <!-- /.dropdown -->
 
@@ -55,20 +68,22 @@
   <nav class="navbar-default navbar-side" role="navigation">
       <div class="sidebar-collapse">
           <ul class="nav" id="main-menu">
-
-              <li>
+              <% if current_user.role == 'super_admin' %>
+                <li>
                   <a class="active-menu" href="<%= webmaster_users_path %>"><i class="fa fa-dashboard"></i> Users</a>
-              </li>
-              <li>
+                </li>
+                <li>
                   <a href="<%= webmaster_categories_path %>"><i class="fa fa-desktop"></i> Categories</a>
-              </li>
+                </li>
+                 <li>
+                   <a href="<%= webmaster_brands_path %>"><i class="fa fa-bar-chart-o"></i> Brands</a>
+                 </li>
+              <% end %>
 		          <li>
                   <a href="<%= webmaster_products_path %>"><i class="fa fa-bar-chart-o"></i> Products</a>
               </li>
 
-              <li>
-                  <a href="<%= webmaster_brands_path %>"><i class="fa fa-bar-chart-o"></i> Brands</a>
-              </li>
+
           </ul>
 
       </div>

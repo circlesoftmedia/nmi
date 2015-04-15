@@ -32,6 +32,7 @@ gem 'mini_magick'
 gem 'rmagick', '2.13.2'
 gem "cocoon"
 gem 'ancestry'
+gem 'remotipart', '~> 1.0'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'

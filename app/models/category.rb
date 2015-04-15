@@ -62,6 +62,30 @@ class Category < ActiveRecord::Base
     return sub_cat_2.flatten
   end
 
+  def get_all_children_level_1
+    sub_cat = []
+    sub_cat_1 = []
+    sub_cat << self.children
+    sub_cat.flatten.each do |sub_1|
+      sub_cat_1 << sub_1.children
+    end
+    return sub_cat_1.flatten
+  end
+
+  def get_all_children_level_2
+    sub_cat = []
+    sub_cat_1 = []
+    sub_cat_2 = []
+    sub_cat << self.children
+    sub_cat.flatten.each do |sub_1|
+      sub_cat_1 << sub_1.children
+    end
+    sub_cat_1.flatten.each do |sub_2|
+      sub_cat_2 << sub_2.children
+    end
+    return sub_cat_2.flatten
+  end
+
   # def get_root_category
 
   # end

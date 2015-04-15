@@ -11,8 +11,9 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 // = require jquery
-//= require jquery-ui
 //= require jquery_ujs
+//= require jquery-ui
+
 //= require jquery-fileupload/basic
 //= require cocoon
 // = require ./backend/bootstrap.min
@@ -23,6 +24,7 @@
 // = require  ./backend/jquery.metisMenu
 // = require ./backend/dataTables/jquery.dataTables
 // = require ./backend/dataTables/dataTables.bootstrap
+// = require ./backend/live_validation
 
 
 

@@ -16,6 +16,10 @@ class Webmaster::CategoriesController < ApplicationController
     end
   end
 
+  def category_childrens
+    @parent_category = Category.get_all_parent
+  end
+
   # GET /webmaster/categories/1
   # GET /webmaster/categories/1.json
   def show

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150406120126) do
+ActiveRecord::Schema.define(:version => 20150415053802) do
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(:version => 20150406120126) do
     t.float    "price"
     t.integer  "brand_id"
     t.string   "part_number"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.string   "uniq_code"
     t.string   "token"
     t.string   "product_image"
@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(:version => 20150406120126) do
     t.integer  "sub_category_id"
     t.integer  "sub_category_first_id"
     t.integer  "sub_category_second_id"
+    t.boolean  "is_active",              :default => false
+    t.string   "store"
   end
 
   create_table "products_product_items", :force => true do |t|
@@ -73,8 +75,8 @@ ActiveRecord::Schema.define(:version => 20150406120126) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  :default => "",   :null => false
+    t.string   "encrypted_password",     :default => "",   :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -101,8 +103,14 @@ ActiveRecord::Schema.define(:version => 20150406120126) do
     t.boolean  "subscribe_to_updates"
     t.boolean  "toc"
     t.string   "role"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+    t.boolean  "is_active",              :default => true
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "contact_num_first"
+    t.string   "contact_num_second"
+    t.string   "uniq_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -10,8 +10,9 @@ class Ability
     if user.role? :super_admin
       can :manage, :all
     elsif user.role? :admin
-      can :manage, Product, :user_id => user.id
-      can :manage, Brand
+      can :read, Product, :user_id => user.id
+      can :create, Product, :user_id => user.id
+      can :edit, Brand
     end
     #
     # The first argument to `can` is the action you are giving the user

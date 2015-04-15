@@ -4,7 +4,8 @@
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-             Product Lists
+             <span> Product Lists </span>
+             <%= link_to 'New', new_webmaster_product_path, class: 'pull-right' %>
           </div>
           <div class="panel-body">
             <div class="table-responsive">
@@ -39,7 +40,7 @@
               <% end %>
               </table>
             </div>
-            <%= link_to 'New', new_webmaster_product_path %>
+
           </div>
         </div>
       </div>

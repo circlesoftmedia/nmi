@@ -24,15 +24,6 @@
                     <% end %>
 
                     <div class="form-group">
-                      <%= f.label :title %><br />
-                      <%= f.text_field :title %>
-                    </div>
-                    <div class="form-group">
-                      <%= f.label :description %><br />
-                      <%= f.text_area :description, :cols => "50", :rows => "8" %>
-                    </div>
-
-                    <div class="form-group">
                       <%= f.label 'Select brand name' %><br />
                       <%= f.collection_select :brand_id, Brand.all, :id, :name %>
 
@@ -42,6 +33,20 @@
 
                       </div>
                       <br/>
+                    </div>
+
+                    <div class="form-group">
+                      <%= f.label :title %><br />
+                      <%= f.text_field :title %>
+                    </div>
+                    <div class="form-group">
+                      <%= f.label :description %><br />
+                      <%= f.text_area :description, :cols => "50", :rows => "8" %>
+                    </div>
+
+                    <div class="form-group" id='categories'>
+                      <%= f.label 'Store' %><br />
+                      <%= f.select(:store, options_for_select(Product::STORE))%>
                     </div>
 
                     <div class="form-group">

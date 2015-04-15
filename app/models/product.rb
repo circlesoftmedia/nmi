@@ -7,7 +7,8 @@ class Product < ActiveRecord::Base
 
 	attr_accessible :title, :description, :price, :brand_id, :user_id, :category_id, :part_number,
                   :images_attributes, :token, :product_image, :product_items_attributes,
-                  :products_product_items_attributes, :sub_category_id, :sub_category_first_id, :sub_category_second_id
+                  :products_product_items_attributes, :sub_category_id, :sub_category_first_id,
+                  :sub_category_second_id, :store, :is_active
 	accepts_nested_attributes_for :images, :allow_destroy => true
   accepts_nested_attributes_for :products_product_items,
            :reject_if => :all_blank,
@@ -22,6 +23,7 @@ class Product < ActiveRecord::Base
 
   after_create :generate_uniq_id
 
+  STORE = [['New store', 'new_store'], ['Old store', 'old_store']]
 
   def generate_token
     self.token = loop do

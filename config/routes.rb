@@ -6,7 +6,11 @@ Nmi::Application.routes.draw do
   devise_for :users, :path => "webmaster"
 
   namespace :webmaster do
-    resources :categories
+    resources :categories do
+       collection do
+        get :category_childrens
+      end
+    end
     resources :users
     resources :brands do
       collection do
