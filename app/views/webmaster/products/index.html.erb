@@ -28,7 +28,7 @@
                   <td><%= product.title %></td>
                   <td><%= product.description %></td>
                   <td><%= product.price %></td>
-                  <td><%= product.brand_id %></td>
+                  <td><%= product.brand.name %></td>
                   <td><%= product.part_number %></td>
                   <td><%= product.try(:uniq_code) %></td>
                   <td><%= link_to 'Show', webmaster_product_path(product) %></td>

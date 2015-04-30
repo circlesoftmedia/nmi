@@ -1,6 +1,6 @@
 class Brand < ActiveRecord::Base
    attr_accessible :name
-   belongs_to :product
+   has_one :product
    validates :name, presence: true
 
 end
