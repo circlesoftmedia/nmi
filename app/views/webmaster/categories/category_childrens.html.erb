@@ -9,7 +9,6 @@
           </div>
           <div class="panel-body">
             <div class="table-responsive">
-
               <table class="table table-striped table-bordered table-hover">
                 <tr>
                   <th>Parent</th>
@@ -18,36 +17,39 @@
                   <th>Third children</th>
                 </tr>
 
-              <% @parent_category.each do |category| %>
-                <tr>
-                  <td><%= category.name %></td>
-                  <td>
-                    <% category.children.each do |sub| %>
-                      <%= sub.name %>
-                      <%=', ' %>
-                    <% end %>
-                  </td>
-                  <td>
-                    <% sub_category =  category.get_all_children_level_1 %>
-
-                    <% sub_category.flatten.each do |sub| %>
-                      <%= sub.name %>
-                      <%=', '%>
-                    <% end %>
-                  </td>
-                  <td>
-                    <% sub_sub_category = category.get_all_children_level_2 %>
-
-                    <% sub_sub_category.each do |sub| %>
-                      <%= sub.name %>
-                      <%=', ' %>
-                    <% end %>
-                  </td>
-                </tr>
-              <% end %>
+                <% @parent_category.order(:name).each do |category| %>
+                  <tr>
+                    <td><%= category.name %></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                      <% category.children.order(:name).each do |sub| %>
+                        <tr>
+                          <td></td>
+                          <td><%= sub.name %></td>
+                          <td></td>
+                          <td></td>
+                          <% sub.children.order(:name).each do |ch|%>
+                            <tr>
+                              <td></td>
+                              <td></td>
+                              <td><%= ch.name %></td>
+                              <% ch.children.order(:name).each do |c|%>
+                                <tr>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td><%= c.name %></td>
+                                </tr>
+                              <% end %>
+                             </tr>
+                          <% end %>
+                        </tr>
+                      <% end %>
+                  </tr>
+                <% end %>
               </table>
             </div>
-
           </div>
         </div>
       </div>
